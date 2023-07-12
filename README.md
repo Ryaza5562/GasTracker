@@ -12,7 +12,7 @@ By default program:
 - Adds gas price in Ethereum
 - Adds itself to startup
 
-# How to
+  How to
 ---
 ## Run:
 
