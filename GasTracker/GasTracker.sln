@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasTracker", "GasTracker.csproj", "{76199B83-043D-48BC-8AB2-FC57327677A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasTrackerRunOnStartUp", "..\GasTrackerRunOnStartUp\GasTrackerRunOnStartUp.csproj", "{2DA89503-2241-44A6-845D-A9AB7F6130C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76199B83-043D-48BC-8AB2-FC57327677A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76199B83-043D-48BC-8AB2-FC57327677A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76199B83-043D-48BC-8AB2-FC57327677A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76199B83-043D-48BC-8AB2-FC57327677A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA89503-2241-44A6-845D-A9AB7F6130C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA89503-2241-44A6-845D-A9AB7F6130C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA89503-2241-44A6-845D-A9AB7F6130C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA89503-2241-44A6-845D-A9AB7F6130C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2348EA0-259F-4019-AE68-D2C46A014C49}
+	EndGlobalSection
+EndGlobal
