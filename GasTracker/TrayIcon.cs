@@ -22,7 +22,7 @@ namespace GasTracker
         public string rpc;
         private DateTime lastAlert;
 
-        public TrayIcon(MainForm mainForm, string name, string rpc, Color color, int? alert = null, int updateTime = 5000)
+        public TrayIcon(MainForm mainForm, string name, string rpc, Color color, int? alert = null, int updateTime = 10000)
         {
             brush.Color = color;
             this.alert = alert;
@@ -99,7 +99,7 @@ namespace GasTracker
                     {
                         if(alert >= value)
                         {
-                            if (lastAlert == null || DateTime.Now >= lastAlert.AddHours(1))
+                            if (lastAlert == default(DateTime) || DateTime.Now >= lastAlert.AddHours(1))
                             {
                                 lastAlert = DateTime.Now;
                                 MessageBox.Show(new Form { TopMost = true }, notifyIcon.Text + ": " + value + " gas!", notifyIcon.Text);

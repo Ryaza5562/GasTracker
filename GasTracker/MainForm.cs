@@ -22,7 +22,7 @@ namespace GasTracker
             trayIcons = new List<TrayIcon>();
             foreach (Chain ch in config.chains)
             {
-                trayIcons.Add(new TrayIcon(this, ch.name, ch.rpc, ch.color));
+                trayIcons.Add(new TrayIcon(this, ch.name, ch.rpc, ch.color, ch.alert));
                 listBoxGasTracker.Items.Add(ch.name);
             }
             if (config.runOnStartUp)
