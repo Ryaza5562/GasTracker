@@ -13,6 +13,7 @@ By default program:
 - Adds itself to startup
 
 Requirements:
+- Windows
 - .Net 4.7.2 or higher
 
 # How to
