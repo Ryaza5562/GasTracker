@@ -12,6 +12,9 @@ By default program:
 - Adds gas price in Ethereum
 - Adds itself to startup
 
+Requirements:
+- .Net 4.7.2 or higher
+
 # How to
 
 ## Run:
