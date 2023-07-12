@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "62oQN4Ffax/VQ0n+nXnQIAIXNXpUXn8cwj3s9SGzUN4acUvwaNfNrOwKjCW9RfLqtsBJ0pEYx0M8au6VV1zfkA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ryaza\\source\\repos\\GasTrackerRunOnStartUp\\GasTrackerRunOnStartUp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ryaza\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ryaza\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ryaza\\.nuget\\packages\\system.diagnostics.eventlog\\5.0.0\\system.diagnostics.eventlog.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ryaza\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ryaza\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\Ryaza\\.nuget\\packages\\taskscheduler\\2.10.1\\taskscheduler.2.10.1.nupkg.sha512"
+  ],
+  "logs": []
+}

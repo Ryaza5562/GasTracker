@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GasTrackerRunOnStartUp": {
+      "commandName": "Project",
+      "commandLineArgs": "add \"C:\\Users\\Ryaza\\source\\repos\\GasTracker\\bin\\Debug\\GasTracker.exe\""
+    }
+  }
+}
