@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32.TaskScheduler;
+using System;
+using System.IO;
 
 namespace GasTrackerRunOnStartUp
 {
@@ -14,6 +16,7 @@ namespace GasTrackerRunOnStartUp
                     try
                     {
                         TaskDefinition td = TaskService.Instance.NewTask();
+                        td.Principal.RunLevel = TaskRunLevel.Highest;
                         td.RegistrationInfo.Description = "Gas tracker in all EVM chains";
                         td.RegistrationInfo.Author = "Ryaza";
                         td.Triggers.Add(new BootTrigger { Delay = TimeSpan.FromSeconds(3) });
@@ -44,5 +47,6 @@ namespace GasTrackerRunOnStartUp
                 }
             }
         }
+
     }
 }

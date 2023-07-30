@@ -120,9 +120,14 @@ namespace GasTracker
         {
             if (checkBoxRunOnStartup.Checked && !config.taskAdded)
             {
-                config.taskAdded = config.runOnStartUp = checkBoxRunOnStartup.Checked;
-                SetStartup(checkBoxRunOnStartup.Checked);
-
+                if (SetStartup(checkBoxRunOnStartup.Checked))
+                {
+                    config.taskAdded = config.runOnStartUp = checkBoxRunOnStartup.Checked;
+                }
+                else
+                {
+                    checkBoxRunOnStartup.Checked = !checkBoxRunOnStartup.Checked;
+                }
             }
             else if (checkBoxRunOnStartup.Checked && config.taskAdded)
             {
@@ -130,9 +135,15 @@ namespace GasTracker
             }
             else if (!checkBoxRunOnStartup.Checked && config.taskAdded)
             {
-                config.runOnStartUp = checkBoxRunOnStartup.Checked;
-                SetStartup(checkBoxRunOnStartup.Checked);
-                config.taskAdded = false;
+                if (SetStartup(checkBoxRunOnStartup.Checked))
+                {
+                    config.runOnStartUp = checkBoxRunOnStartup.Checked;
+                    config.taskAdded = false;
+                }
+                else 
+                {
+                    checkBoxRunOnStartup.Checked = !checkBoxRunOnStartup.Checked;
+                }
             }
             else if (!checkBoxRunOnStartup.Checked && !config.taskAdded)
             {
@@ -145,7 +156,7 @@ namespace GasTracker
             listBoxGasTracker.Items.Add(name);
         }
 
-        public void SetStartup(bool value)
+        public bool SetStartup(bool value)
         {
             Process prc = new Process();
             prc.StartInfo.FileName = Application.StartupPath + "\\" + "GasTrackerRunOnStartUp.exe";
@@ -160,6 +171,7 @@ namespace GasTracker
                 catch (Exception)
                 {
                     MessageBox.Show("Can not add application to task sheduler", "Error");
+                    return false;
                 }
             }
             else
@@ -173,8 +185,10 @@ namespace GasTracker
                 catch (Exception)
                 {
                     MessageBox.Show("Can not delete application from task sheduler", "Error");
+                    return false;
                 }
             }
+            return true;
         }
     }
 }

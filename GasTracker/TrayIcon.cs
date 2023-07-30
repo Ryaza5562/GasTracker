@@ -4,7 +4,7 @@ using Nethereum.Util;
 using Nethereum.Web3;
 using System;
 using System.Drawing;
-using System.Media;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -29,10 +29,11 @@ namespace GasTracker
             this.rpc = rpc;
             this.mainForm = mainForm;
             this.updateTime = updateTime;
+            Icon tempIcon = CreateIconFromNumber(0);
             notifyIcon = new NotifyIcon()
             {
                 Text = name,
-                Icon = CreateIconFromNumber(0),
+                Icon = tempIcon,
                 ContextMenu = new ContextMenu(new MenuItem[] {
                 new MenuItem(name),
                 new MenuItem("Settings", Settings),
@@ -41,6 +42,8 @@ namespace GasTracker
             }),
                 Visible = true
             };
+            DestroyIcon(tempIcon.Handle);
+            tempIcon.Dispose();
             threadBreak = false;
             thread = new Thread(new ParameterizedThreadStart(ChangeTrayIcon));
             thread.Start(this.rpc);
@@ -60,7 +63,7 @@ namespace GasTracker
         {
             threadBreak = true;
             thread.Join();
-            notifyIcon.Visible=false;
+            notifyIcon.Visible = false;
             notifyIcon.Dispose();
         }
 
@@ -88,13 +91,19 @@ namespace GasTracker
         async void ChangeTrayIcon(object rpc)
         {
             Web3 web3 = new Web3((string)rpc);
+            HexBigInteger gasPrice;
+            int value;
+            Icon tempIcon;
             while (!threadBreak)
             {
                 try
                 {
-                    HexBigInteger gasPrice = await web3.Eth.GasPrice.SendRequestAsync();
-                    int value = Convert.ToInt32(Web3.Convert.FromWei(gasPrice.Value, UnitConversion.EthUnit.Gwei));
-                    notifyIcon.Icon = CreateIconFromNumber(value);
+                    gasPrice = await web3.Eth.GasPrice.SendRequestAsync();
+                    value = Convert.ToInt32(Web3.Convert.FromWei(gasPrice.Value, UnitConversion.EthUnit.Gwei));
+                    tempIcon = CreateIconFromNumber(value);
+                    notifyIcon.Icon = tempIcon;
+                    DestroyIcon(tempIcon.Handle);
+                    tempIcon.Dispose();
                     if (alert != null)
                     {
                         if(alert >= value)
@@ -107,7 +116,10 @@ namespace GasTracker
                         }
                     }
                 }
-                catch (RpcClientUnknownException) { }
+                catch (Exception e) 
+                {
+                    MessageBox.Show(e.Message, "Error");
+                }
                 for (int i = 0; i < updateTime; i+=500) {
                     if(threadBreak)
                         break;
@@ -115,6 +127,9 @@ namespace GasTracker
                 }
             }
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+        extern static bool DestroyIcon(IntPtr handle);
     }
 }
 

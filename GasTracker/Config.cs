@@ -18,7 +18,7 @@ namespace GasTracker
             taskAdded = false;
             this.fileName = fileName;
             chains = new List<Chain>();
-            if (!ReadConfigFile(this.fileName))
+            if (!File.Exists(this.fileName) || !ReadConfigFile(this.fileName))
                 CreateDefaultConfigFile(this.fileName, mm);
         }
 
@@ -61,7 +61,8 @@ namespace GasTracker
                         Counter++;
                     }
                 }
-            }catch (Exception) { return false; }
+            }catch (Exception) 
+            { return false; }
             if (Counter < 2)
                 return false;
             return true;
